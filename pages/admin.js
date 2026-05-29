@@ -59,10 +59,11 @@ async function adminOverview() {
   ]);
   const allAdm = await dbGet('admissions', {});
   const levels = ['Nursery','Primary','Upper Basic','Senior Secondary'];
-  const levelCounts = levels.map(l => ({
-    name: l,
-    count: (await dbGet('students', { eq: { level: l } }) || []).length,
-  }));
+ const levelCounts = [];
+for (const l of levels) {
+  const rows = await dbGet('students', { eq: { level: l } }) || [];
+  levelCounts.push({ name: l, count: rows.length });
+}
 
   return `
   <div class="metric-grid">
