@@ -1,0 +1,169 @@
+/* ============================================================
+   NAV.CSS — Navbar & Mobile Menu
+   ============================================================ */
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 66px;
+  background: rgba(8, 28, 16, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.nav-logo-badge {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--gold), var(--goldi));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--g9);
+  flex-shrink: 0;
+}
+.nav-logo-text  { color: #fff; }
+.nav-logo-name  { font-family: var(--font-heading); font-size: 15px; font-weight: 700; line-height: 1.2; }
+.nav-logo-sub   { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; }
+
+/* Desktop links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+.nav-link {
+  color: rgba(255,255,255,0.78);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 11px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--g9) !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+  padding: 7px 16px !important;
+}
+.nav-cta:hover { background: var(--goldi) !important; }
+
+/* User pill */
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.15);
+  margin-left: 8px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.nav-user:hover { background: rgba(255,255,255,0.14); }
+.nav-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--g4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  margin-left: auto;
+}
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+  display: block;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 66px; left: 0; right: 0;
+  background: var(--g9);
+  padding: 1rem 1.5rem 1.5rem;
+  z-index: 999;
+  flex-direction: column;
+  gap: 2px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  max-height: calc(100vh - 66px);
+  overflow-y: auto;
+}
+.mobile-menu.open { display: flex; }
+.mobile-link {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 11px 0;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.mobile-link:hover { color: #fff; }
+.mobile-link.mobile-cta {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-link { font-size: 12.5px; padding: 7px 9px; }
+}
+@media (max-width: 768px) {
+  .nav-links  { display: none; }
+  .hamburger  { display: flex; }
+}

@@ -1,0 +1,154 @@
+/* ============================================================
+   BASE.CSS — Variables, Reset, Typography
+   Mansa Colley School
+   ============================================================ */
+
+:root {
+  /* Green palette */
+  --g9: #081c10;
+  --g8: #0d2b17;
+  --g7: #12391e;
+  --g6: #174a27;
+  --g5: #1e6135;
+  --g4: #267a43;
+  --g3: #3a9e5f;
+  --g2: #6bc98a;
+  --g1: #b8eac9;
+  --g0: #eaf8ef;
+
+  /* Gold palette */
+  --gold:  #c9a227;
+  --goldd: #a07f1a;
+  --goldi: #f0c040;
+  --gold0: #fef9e7;
+
+  /* Neutrals */
+  --bg:     #f7faf8;
+  --white:  #ffffff;
+  --dark:   #0a1a0f;
+  --muted:  #4a6155;
+  --light:  #8aaa95;
+
+  /* UI */
+  --border:    rgba(23,74,39,0.13);
+  --radius:    12px;
+  --radiuslg:  20px;
+  --radiusxl:  32px;
+  --shadow:    0 2px 16px rgba(8,28,16,0.09);
+  --shadowmd:  0 8px 40px rgba(8,28,16,0.14);
+  --shadowlg:  0 20px 80px rgba(8,28,16,0.18);
+
+  /* Typography */
+  --font-body:    'DM Sans', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+}
+
+/* Reset */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--dark);
+  background: var(--bg);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); line-height: 1.2; }
+a  { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: var(--font-body); }
+input, textarea, select { font-family: var(--font-body); outline: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--g0); }
+::-webkit-scrollbar-thumb { background: var(--g4); border-radius: 3px; }
+
+/* Layout helpers */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.section    { padding: 5rem 0; }
+.section-sm { padding: 3rem 0; }
+.page       { padding-top: 66px; min-height: 100vh; }
+.center     { text-align: center; }
+.center .slabel { justify-content: center; }
+.center .sdesc  { margin: 0 auto; }
+
+/* Section labels */
+.slabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--g5);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.slabel::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+}
+.stitle {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 0.9rem;
+}
+.sdesc {
+  font-size: 16px;
+  line-height: 1.78;
+  color: var(--muted);
+}
+
+/* Grid helpers */
+.grid-2    { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3    { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.grid-4    { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+/* Loading spinner */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--g1);
+  border-top-color: var(--g5);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+}
+.empty-state .es-icon { font-size: 3rem; margin-bottom: 1rem; }
+.empty-state .es-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 6px; color: var(--dark); }
+.empty-state .es-desc  { font-size: 14px; }
+
+/* Responsive base */
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .section    { padding: 3.5rem 0; }
+  .section-sm { padding: 2rem 0; }
+}
+@media (max-width: 480px) {
+  .container { padding: 0 1rem; }
+}
